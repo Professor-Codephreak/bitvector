@@ -28,8 +28,6 @@ bitvector/
     └── grafana_setup.json
 ```
 
-
-
 ---
 
 BitVector is an advanced blockchain AI analytics system that transforms Bitcoin transaction data into high-dimensional vector embeddings, enabling:
@@ -76,25 +74,20 @@ Built on PostgreSQL + TimescaleDB + pgvector with OpenAI embeddings.
 
 ## ⚙️ Setup Instructions
 
-### 1. 📦 Clone and Configure
+###  📦 Clone and Configure
 
 ```bash
-git clone https://github.com/your-org/bitvector.git
+git clone https://github.com/Professor-Codephreak/bitvector
 cd bitvector
 cp .env.example .env
-Edit .env to include:
+```
 
-Bitcoin Core RPC credentials
+OpenAI API key (used as example for LLM with ada)
 
-PostgreSQL URI
-
-OpenAI API key
-
-2. 🐳 Run with Docker
-bash
-Copy
-Edit
+ 🐳 Run with Docker
+```bash
 docker-compose up --build
+```
 This launches:
 
 🐘 PostgreSQL with Timescale + pgvector
@@ -103,12 +96,11 @@ This launches:
 
 📊 Grafana dashboard UI
 
-3. 🧬 Ingest Blockchain Data
-bash
-Copy
-Edit
+ 🧬 Ingest Blockchain Data
+```bash
 cd ingest
 python tx_ingest.py
+```
 This will:
 
 Connect to your local Bitcoin Core node
@@ -127,12 +119,11 @@ POST /search
 Submit a 384-dim vector and receive nearest transaction matches.
 
 Example Input
-json
-Copy
-Edit
+```json
 {
   "vector": [0.038, 0.284, ..., 0.092]
 }
+```
 📊 Dashboards
 Transactions per 10min
 
