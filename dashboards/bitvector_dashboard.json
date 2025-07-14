@@ -1,0 +1,122 @@
+{
+  "id": null,
+  "uid": "bitvector-main",
+  "title": "BitVector Intelligence Dashboard",
+  "tags": ["bitvector", "blockchain", "semantic", "ai"],
+  "timezone": "browser",
+  "schemaVersion": 36,
+  "version": 1,
+  "refresh": "30s",
+  "panels": [
+    {
+      "type": "timeseries",
+      "title": "Transactions Per 10 Minutes",
+      "datasource": "BitVector",
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "color": { "mode": "palette-classic" }
+        }
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "rawSql": "SELECT time_bucket('10 minutes', block_time) AS time, COUNT(*) AS value FROM transactions GROUP BY time ORDER BY time;",
+          "format": "time_series"
+        }
+      ],
+      "gridPos": { "x": 0, "y": 0, "w": 12, "h": 8 }
+    },
+    {
+      "type": "timeseries",
+      "title": "Average Fee per Transaction (sats)",
+      "datasource": "BitVector",
+      "targets": [
+        {
+          "refId": "B",
+          "rawSql": "SELECT time_bucket('10 minutes', block_time) AS time, AVG(fee_sat) AS value FROM transactions WHERE fee_sat > 0 GROUP BY time ORDER BY time;",
+          "format": "time_series"
+        }
+      ],
+      "gridPos": { "x": 12, "y": 0, "w": 12, "h": 8 }
+    },
+    {
+      "type": "timeseries",
+      "title": "High-Value Transactions (BTC > 1)",
+      "datasource": "BitVector",
+      "targets": [
+        {
+          "refId": "C",
+          "rawSql": "SELECT time_bucket('30 minutes', block_time) AS time, COUNT(*) AS value FROM transactions WHERE output_total_sat > 100000000 GROUP BY time ORDER BY time;",
+          "format": "time_series"
+        }
+      ],
+      "gridPos": { "x": 0, "y": 8, "w": 12, "h": 8 }
+    },
+    {
+      "type": "heatmap",
+      "title": "Semantic Vector Drift (Embedding[1])",
+      "datasource": "BitVector",
+      "targets": [
+        {
+          "refId": "D",
+          "rawSql": "SELECT block_time AS time, embedding[1] AS value FROM transactions WHERE embedding IS NOT NULL ORDER BY time;",
+          "format": "time_series"
+        }
+      ],
+      "gridPos": { "x": 12, "y": 8, "w": 12, "h": 8 }
+    },
+    {
+      "type": "stat",
+      "title": "Latest Block Height",
+      "datasource": "BitVector",
+      "targets": [
+        {
+          "refId": "E",
+          "rawSql": "SELECT MAX(block_height) AS value FROM blocks;",
+          "format": "table"
+        }
+      ],
+      "gridPos": { "x": 0, "y": 16, "w": 6, "h": 4 }
+    },
+    {
+      "type": "stat",
+      "title": "Avg TX Per Block (24h)",
+      "datasource": "BitVector",
+      "targets": [
+        {
+          "refId": "F",
+          "rawSql": "SELECT AVG(num_tx) AS value FROM blocks WHERE timestamp > NOW() - interval '1 day';",
+          "format": "table"
+        }
+      ],
+      "gridPos": { "x": 6, "y": 16, "w": 6, "h": 4 }
+    },
+    {
+      "type": "stat",
+      "title": "Vectorized TX Count",
+      "datasource": "BitVector",
+      "targets": [
+        {
+          "refId": "G",
+          "rawSql": "SELECT COUNT(*) AS value FROM transactions WHERE embedding IS NOT NULL;",
+          "format": "table"
+        }
+      ],
+      "gridPos": { "x": 12, "y": 16, "w": 6, "h": 4 }
+    },
+    {
+      "type": "stat",
+      "title": "TX Last Hour",
+      "datasource": "BitVector",
+      "targets": [
+        {
+          "refId": "H",
+          "rawSql": "SELECT COUNT(*) AS value FROM transactions WHERE block_time > NOW() - interval '1 hour';",
+          "format": "table"
+        }
+      ],
+      "gridPos": { "x": 18, "y": 16, "w": 6, "h": 4 }
+    }
+  ]
+}
