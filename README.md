@@ -70,7 +70,6 @@ Built on PostgreSQL + TimescaleDB + pgvector with OpenAI embeddings.
 | 📊 Grafana Dashboards            | Live visualization of blockchain behavior & stats        |
 | 🧪 FastAPI Interface             | Query embeddings via REST (`/search`)                    |
 
----
 
 ## ⚙️ Setup Instructions
 
