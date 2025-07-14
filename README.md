@@ -1,3 +1,4 @@
+```txt
 bitvector/
 ├── .env.example
 ├── README.md
@@ -15,4 +16,5 @@ bitvector/
 ├── api/
 │   └── server.py
 └── dashboards/
-    └── grafana_setup.json (placeholder)
+    └── grafana_setup.json
+```
