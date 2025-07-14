@@ -5,6 +5,7 @@
 ![Build](https://img.shields.io/badge/build-stable-green)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Timescale-blue)
 ![Embedding](https://img.shields.io/badge/LLM-OpenAI-ff69b4)
+---
 
 ```txt
 bitvector/
