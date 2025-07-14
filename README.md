@@ -139,8 +139,8 @@ Go to Dashboards > Import
 
 Use dashboards/bitvector_dashboard.json
 
-🧠 Extend the Mind
-Add ZMQ live mempool ingestion
+# 🧠 Extend the Mind
+Add ZMQ live mempool ingestion<br  /><br />
 
 Build a custom LLM fine-tuned on chain heuristics
 
