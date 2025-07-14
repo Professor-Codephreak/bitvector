@@ -40,7 +40,7 @@ Built on PostgreSQL + TimescaleDB + pgvector with OpenAI embeddings.
 
 
 ## 📐 Architecture
-```yaml
+```txt
 +--------------+ +---------------------+ +---------------------+
 | Bitcoin Core| ==> | ETL + Vectorizer | ==> | PostgreSQL + Vector |
 | (bitcoind) | | (tx_ingest.py) | | (Timescale + pgvec)|
@@ -56,8 +56,7 @@ Built on PostgreSQL + TimescaleDB + pgvector with OpenAI embeddings.
 | Grafana |
 | Dashboards |
 +----------+
----
-
+```
 ## 🛠️ Features
 
 | Feature                          | Description                                              |
