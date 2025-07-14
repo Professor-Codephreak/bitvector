@@ -28,7 +28,6 @@ bitvector/
     └── grafana_setup.json
 ```
 
----
 
 BitVector is an advanced blockchain AI analytics system that transforms Bitcoin transaction data into high-dimensional vector embeddings, enabling:
 
@@ -39,7 +38,6 @@ BitVector is an advanced blockchain AI analytics system that transforms Bitcoin 
 
 Built on PostgreSQL + TimescaleDB + pgvector with OpenAI embeddings.
 
----
 
 ## 📐 Architecture
 ```yaml
